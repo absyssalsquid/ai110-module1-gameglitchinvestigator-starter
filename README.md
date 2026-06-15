@@ -25,28 +25,43 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [x] Describe the game's purpose.
+- [x] Detail which bugs you found.
+- [x] Explain what fixes you applied.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. The game starts. A secret random number is generated for the user to determine within a limited number of tries. The range and number of allowed guesses depends on the selected difficulty.
+2. The user enters a strictly numeric guess, fewer than 20 digits. If not, the user receives an error message.
+3. The user receives a hint if the guess is too low ("go higher") or too high ("go lower"). If the guess is correct, the round ends.
+4. The user submits guesses until the guess is correct or they run out of attempts. If correct, a congratulatory message is displayed with a balloon effect. If out of tries, a failure message is shown.
+5. The game does not accept guesses at this point. If the user tries, a message instructs them to start a new game.
+6. The user starts a new round and begins again.
+7. At any point, the user can change the game difficulty. This affects the generated number range and number of allowed guesses. Upon selecting a new difficulty, a new round is started.
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
 ## 🧪 Test Results
 
 ```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
+tests/test_game_logic.py::test_winning_guess PASSED                         [  7%]
+tests/test_game_logic.py::test_guess_too_high PASSED                        [ 14%]
+tests/test_game_logic.py::test_guess_too_low PASSED                         [ 21%]
+tests/test_game_logic.py::test_parse_empty PASSED                           [ 28%]
+tests/test_game_logic.py::test_parse_valid_numbers PASSED                   [ 35%]
+tests/test_game_logic.py::test_parse_whitespace PASSED                      [ 42%]
+tests/test_game_logic.py::test_parse_special_float PASSED                   [ 50%]
+tests/test_game_logic.py::test_parse_alphanumeric_strings PASSED            [ 57%]
+tests/test_game_logic.py::test_parse_special_characters PASSED              [ 64%]
+tests/test_game_logic.py::test_parse_zero PASSED                            [ 71%]
+tests/test_game_logic.py::test_parse_negative PASSED                        [ 78%]
+tests/test_game_logic.py::test_parse_decimals PASSED                        [ 85%]
+tests/test_game_logic.py::test_parse_big_numbers PASSED                     [ 92%]
+tests/test_game_logic.py::test_difficulty_range PASSED                      [100%]
+
+=============================== 14 passed in 0.03s ===============================
 ```
 
 ## 🚀 Stretch Features
